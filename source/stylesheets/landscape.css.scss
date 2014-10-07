@@ -1,0 +1,266 @@
+$skyoffset: 90px;
+$skyheight: 260px;
+$weatherExt: 100px;
+$oceanheight: 250px;
+
+
+
+.postcard-rotate{
+  -webkit-transform-origin: rotate(-8deg);-moz-transform-origin: rotate(-8deg);-ms-transform-origin: rotate(-8deg);-o-transform-origin: rotate(-8deg);transform-origin: rotate(-8deg);
+}
+
+.postcard{
+//  -webkit-transform: rotate(8deg);-moz-transform: rotate(8deg);-ms-transform: rotate(8deg);-o-transform: rotate(8deg);transform: rotate(8deg);
+  position: relative;
+  overflow: hidden;
+  height: 475px;
+  border-bottom: 15px solid #FFF;
+  left: 0;
+  right: 0;
+  top: 0;
+  -webkit-box-shadow: 1px 1px 1px 1px rgba(106,39,34,.6);
+  box-shadow: -1px 1px 1px 1px rgba(106,39,34,.6);
+
+  #sky{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    height: $skyheight;
+    background: #5487c5; /* Old browsers */
+    background: -moz-linear-gradient(top,  #5487c5 0%, #9ac5e3 73%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5487c5), color-stop(73%,#9ac5e3)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #5487c5 0%,#9ac5e3 73%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #5487c5 0%,#9ac5e3 73%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #5487c5 0%,#9ac5e3 73%); /* IE10+ */
+    background: linear-gradient(to bottom,  #5487c5 0%,#9ac5e3 73%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5487c5', endColorstr='#9ac5e3',GradientType=0 ); /* IE6-9 */
+
+  }
+
+  #haze{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    height: $skyheight;
+  }
+
+  #haze.mostly-cloudy{
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ffffff 0%, #efefef 31%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(31%,#efefef)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#efefef 31%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ffffff 0%,#efefef 31%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ffffff 0%,#efefef 31%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ffffff 0%,#efefef 31%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#efefef',GradientType=0 ); /* IE6-9 */
+    opacity: .8;
+  }
+
+  #haze.raining, #haze.stormy{
+
+    background: #bec3d1; /* Old browsers */
+    background: -moz-linear-gradient(top,  #bec3d1 0%, #8f909e 91%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#bec3d1), color-stop(91%,#8f909e)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #bec3d1 0%,#8f909e 91%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #bec3d1 0%,#8f909e 91%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #bec3d1 0%,#8f909e 91%); /* IE10+ */
+    background: linear-gradient(to bottom,  #bec3d1 0%,#8f909e 91%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bec3d1', endColorstr='#8f909e',GradientType=0 ); /* IE6-9 */
+    opacity: .8;
+
+  }
+
+  #ocean{
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    top: $skyheight;
+    height: $oceanheight;
+    background: #409396; /* Old browsers */
+    background: -moz-linear-gradient(top,  #409396 0%, #306175 91%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#409396), color-stop(91%,#306175)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #409396 0%,#306175 91%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #409396 0%,#306175 91%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #409396 0%,#306175 91%); /* IE10+ */
+    background: linear-gradient(to bottom,  #409396 0%,#306175 91%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#409396', endColorstr='#306175',GradientType=0 ); /* IE6-9 */
+
+
+
+  }
+
+  #ocean.mostly-cloudy{
+    background: #c3e4ef; /* Old browsers */
+    background: -moz-linear-gradient(top,  #c3e4ef 0%, #306175 54%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#c3e4ef), color-stop(54%,#306175)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #c3e4ef 0%,#306175 54%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #c3e4ef 0%,#306175 54%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #c3e4ef 0%,#306175 54%); /* IE10+ */
+    background: linear-gradient(to bottom,  #c3e4ef 0%,#306175 54%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3e4ef', endColorstr='#306175',GradientType=0 ); /* IE6-9 */
+
+  }
+
+  #ocean.storm{
+    background: #7d9a9e; /* Old browsers */
+    background: -moz-linear-gradient(top,  #7d9a9e 0%, #306175 54%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7d9a9e), color-stop(54%,#306175)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #7d9a9e 0%,#306175 54%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #7d9a9e 0%,#306175 54%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #7d9a9e 0%,#306175 54%); /* IE10+ */
+    background: linear-gradient(to bottom,  #7d9a9e 0%,#306175 54%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d9a9e', endColorstr='#306175',GradientType=0 ); /* IE6-9 */
+
+  }
+
+  #sutro-hill{
+    background: url(/images/headland.png) no-repeat;
+    position: absolute;
+    left:43px;
+    top: 103px + $skyoffset;
+    width: 700px;
+    height: 104px;
+    z-index: 10;
+  }
+
+  #sutro-hill-2{
+    background: url(/images/headland.png) no-repeat;
+    position: absolute;
+    left:363px;
+    top: 119px + $skyoffset;
+    width: 700px;
+    height: 104px;
+    z-index: 10;
+  }
+
+  #distant-hill-3{
+    background: url(/images/forefront_hill.png) no-repeat;
+    position: absolute;
+    left: -65px;
+    top: 160px + $skyoffset;
+    width: 700px;
+    height: 391px;
+    z-index: 10;
+  }
+
+  #distant-hill{
+    background: url(/images/headland.png) no-repeat;
+    position: absolute;
+    left: 560px;
+    top: 140px + $skyoffset;
+    width: 700px;
+    height: 391px;
+    z-index: 15;
+  }
+
+  #distant-hill-2{
+    background: url(/images/headland.png) no-repeat;
+    position: absolute;
+    left: 173px;
+    top: 154px + $skyoffset;
+    width: 700px;
+    height: 391px;
+    z-index: 20;
+  }
+
+  #forefront-hill{
+    background: url(/images/forefront_hill.png) no-repeat;
+    position: absolute;
+    left: 358pxpx;
+    top: 195px + $skyoffset;
+    width: 700px;
+    height: 391px;
+    z-index: 25;
+  }
+
+  #city-hill{
+    background: url(/images/forefront_hill.png) no-repeat;
+    position: absolute;
+    left: -40px;
+    top: 275px;
+    width: 700px;
+    height: 391px;
+    z-index: 29;
+  }
+
+  #city{
+    position: absolute;
+    left: -5px;
+    top: 265px;
+    width: 700px;
+    height: 391px;
+    z-index: 29;
+  }
+
+  #headland{
+    background: url(/images/headland.png) no-repeat;
+    position: absolute;
+    left: 385px;
+    top: 190px + $skyoffset;
+    width: 720px;
+    height: 391px;
+    z-index: 30;
+  }
+
+  #beach{
+    background: url(/images/beach.png) no-repeat;
+    position: absolute;
+    left: 218px;
+    top: 281px + $skyoffset;
+    width: 700px;
+    height: 391px;
+    z-index: 35;
+  }
+
+  #headland-cliff{
+    position: absolute;
+    left: 626px;
+    top: 243px + $skyoffset;
+    width: 280px;
+    height: 75px;
+    z-index: 40;
+  }
+
+  #bridge{
+    background: url(/images/gg2.png) no-repeat;
+    position: absolute;
+    left: -100px;
+    top: 25px + $skyoffset;
+    width: 770px;
+    height: 450px;
+    z-index: 45;
+    background-size: contain;
+  }
+
+  #weather_background{
+    z-index: 0;
+    height: $skyheight+$weatherExt;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+  }
+
+  #weather_midground{
+    z-index: 20;
+    height: $skyheight;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0
+  }
+
+  #weather_foreground{
+    z-index: 50;
+    height: $skyheight - 60px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0
+  }
+
+
+}
+

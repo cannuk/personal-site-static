@@ -1,6 +1,6 @@
-#= require init
+#= require ../init
 
-class sdn.landscape.views.Ocean extends Backbone.View
+class sdn.Views.Ocean extends Backbone.View
   initialize: ->
     @model.on("change:scene", @render, this)
   css:

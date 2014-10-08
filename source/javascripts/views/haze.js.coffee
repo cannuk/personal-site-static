@@ -1,6 +1,6 @@
-#= require init
+#= require ../init
 
-class sdn.landscape.views.Haze extends Backbone.View
+class sdn.Views.Haze extends Backbone.View
   initialize: ->
     @model.on("change:scene", @render, this)
   css:

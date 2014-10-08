@@ -1,5 +1,5 @@
-#= require init
-class sdn.YQLModel extends Backbone.Model
+#= require ../init
+class sdn.Models.YQLModel extends Backbone.Model
   sync: (method, model, options) ->
       params = _.extend(
         type: 'GET'

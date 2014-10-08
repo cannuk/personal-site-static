@@ -1,7 +1,6 @@
-#= require init
-#= require shared/yql_model
-#= require ./init
-class sdn.landscape.Weather extends sdn.YQLModel
+#= require ../init
+#= require ./yql_model
+class sdn.Models.Weather extends sdn.Models.YQLModel
   urlRoot: "http://query.yahooapis.com/v1/public/yql?q=select%20wind%2C%20astronomy%2C%20item.condition.code%2C%20item.condition.temp%2C%20item.condition.text%20%20%20from%20weather.forecast%20where%20location%3D%2294105%22&format=json&callback=?"
   initialize: ->
     @setScene()

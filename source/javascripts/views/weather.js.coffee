@@ -1,6 +1,6 @@
-#= require init
+#= require ../init
 #= require cloudgen
-class sdn.landscape.views.Weather extends Backbone.View
+class sdn.Views.Weather extends Backbone.View
 
 
   clouds:

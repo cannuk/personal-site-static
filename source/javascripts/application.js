@@ -14,8 +14,6 @@
 //= require jquery
 //= require underscore
 //= require backbone
-//= require shared/yql_model
-//= require_tree ./landscape
 //= require kinetic-core
 //= require jquery.jsonp
 //= require cloudgen

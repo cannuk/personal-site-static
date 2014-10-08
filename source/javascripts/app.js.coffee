@@ -1,28 +1,30 @@
 #= require ./init
+#= require_tree ./models
+#= require_tree ./views
 
-
-_(@sdn).extend(
+_(sdn).extend(
   app:
     init: ->
-      @landscape= new sdn.landscape.Weather({})
-      @landscape.fetch(
+      @weather= new sdn.Models.Weather()
+      @weather.fetch(
         success: => @createWeather()
         error: => @setDefaultWeather()
       )
     createWeather: () ->
-      new sdn.landscape.views.Weather(model: @landscape, ceiling: 80, el: $("#weather_background").get(0)).render()
-      new sdn.landscape.views.Weather(model: @landscape, el: $("#weather_midground").get(0), delay: 1500, windModifier: .05).render()
-      new sdn.landscape.views.Weather(model: @landscape, el: $("#weather_foreground", delay: 2500, windModifier: .08).get(0)).render()
-      new sdn.landscape.views.Haze(model: @landscape).render()
-      new sdn.landscape.views.Ocean(model: @landscape).render()
+      new sdn.Views.Weather(model: @weather, ceiling: 80, el: $("#weather_background").get(0)).render()
+      new sdn.Views.Weather(model: @weather, el: $("#weather_midground").get(0), delay: 1500, windModifier: .05).render()
+      new sdn.Views.Weather(model: @weather, el: $("#weather_foreground", delay: 2500, windModifier: .08).get(0)).render()
+      new sdn.Views.Haze(model: @weather).render()
+      new sdn.Views.Ocean(model: @weather).render()
 
     setDefaultWeather: ->
-      @landscape.set(
+      @weather.set(
         item:
           condition:
             code: 30
             status: 'Partly Cloudy'
-          wind: 12
+        wind:
+          speed: 12
       )
       @createWeather()
 
@@ -30,4 +32,4 @@ _(@sdn).extend(
       @scene = @getScene()
 
 )
-$ =>@sdn.app.init()
+$ =>sdn.app.init()

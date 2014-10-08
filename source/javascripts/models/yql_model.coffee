@@ -11,7 +11,7 @@ class sdn.Models.YQLModel extends Backbone.Model
       $.jsonp(params)
 
   parse: (response) ->
-    response?.query.results.channel
+    response?.query?.results?.channel
 
 
 

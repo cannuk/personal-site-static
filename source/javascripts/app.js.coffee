@@ -7,7 +7,12 @@ _(sdn).extend(
     init: ->
       @weather= new sdn.Models.Weather()
       @weather.fetch(
-        success: => @createWeather()
+        success: =>
+#         sometimes the yql service is down but still returns successfully, it just doesnt return results.
+          if @weather.has("item")
+            @createWeather()
+          else
+            @setDefaultWeather()
         error: => @setDefaultWeather()
       )
     createWeather: () ->
@@ -17,6 +22,8 @@ _(sdn).extend(
       new sdn.Views.Haze(model: @weather).render()
       new sdn.Views.Ocean(model: @weather).render()
 
+
+#   For default weather we may as well make it a beautiful day (except with a few clouds to show them off)
     setDefaultWeather: ->
       @weather.set(
         item:

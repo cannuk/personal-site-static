@@ -20,6 +20,12 @@ class sdn.Models.Weather extends sdn.Models.YQLModel
       'rain':    [8,9,11,12,40, 28]
     for own scene, codes of scenes
       return @set(scene: scene) unless _.indexOf(codes, code) == -1
+
+  changeWind: (windspeed) ->
+    wind = @get("wind")
+    wind.speed = windspeed
+    @set("wind", wind)
+
   setWindspeed: () ->
     wind = @get("wind")
     #I use 7 as the benchmark average wind speed

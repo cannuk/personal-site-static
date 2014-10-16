@@ -11,7 +11,11 @@ class sdn.Models.YQLModel extends Backbone.Model
       $.jsonp(params)
 
   parse: (response) ->
-    response?.query?.results?.channel
+    response = response?.query?.results?.channel
+    if response.item.condition?.code?
+      response.conditionCode = response.item.condition.code
+      response.conditionText = response.item.condition.text
+    response
 
 
 

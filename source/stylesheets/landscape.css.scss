@@ -4,9 +4,12 @@ $weatherExt: 100px;
 $oceanheight: 250px;
 
 
-
-.postcard-rotate{
-  -webkit-transform-origin: rotate(-8deg);-moz-transform-origin: rotate(-8deg);-ms-transform-origin: rotate(-8deg);-o-transform-origin: rotate(-8deg);transform-origin: rotate(-8deg);
+//wrap the postcard so I can turn down the opacity at night to give the effect of darkness
+.postcard-background{
+  background-color: #333;
+  border-bottom: 15px solid #FFF;
+  -webkit-box-shadow: 1px 1px 1px 1px rgba(106,39,34,.6);
+  box-shadow: -1px 1px 1px 1px rgba(106,39,34,.6);
 }
 
 .postcard{
@@ -14,19 +17,69 @@ $oceanheight: 250px;
   position: relative;
   overflow: hidden;
   height: 475px;
-  border-bottom: 15px solid #FFF;
+
   left: 0;
   right: 0;
   top: 0;
-  -webkit-box-shadow: 1px 1px 1px 1px rgba(106,39,34,.6);
-  box-shadow: -1px 1px 1px 1px rgba(106,39,34,.6);
 
-  #sky{
+  &.night{
+    opacity: .7;
+  }
+
+  .weather-conditions{
+    z-index: 2000;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 5px 10px;
+    text-align: center;
+    color: #FFF;
+    h1{
+      font-size: 65px;
+      margin: 0 auto;
+      font-weight: 100;
+
+    }
+    h1::after{
+      content: "\00b0";
+      position: relative;
+      vertical-align: super;
+      font-size: 30px;
+      font-weight: 100;
+    }
+    h1, .conditions{
+      text-shadow: 0 1px 2px #1D5987;
+    }
+  }
+
+
+  #sky, #sky-rising, #sky-night {
     position: absolute;
     left: 0px;
     top: 0px;
     right: 0px;
     height: $skyheight;
+  }
+
+  #sky-rising{
+    background: linear-gradient(to bottom, #154277 0%,#576e71 30%,#e1c45e 70%,#b26339 100%);
+    background: -moz-linear-gradient(to bottom, #154277 0%,#576e71 30%,#e1c45e 70%,#b26339 100%);
+    background: -webkit-linear-gradient(to bottom, #154277 0%,#576e71 30%,#e1c45e 70%,#b26339 100%);
+    opacity: 0;
+  }
+
+  #sky-night{
+    background: #5487c5; /* Old browsers */
+    background: -moz-linear-gradient(top,  #333 0%, #000 73%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#333), color-stop(73%,#000)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #333 0%,#000 73%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #333 0%,#000 73%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #333 0%,#000 73%); /* IE10+ */
+    background: linear-gradient(to bottom,  #333 0%,#000 73%); /* W3C */
+    opacity: 0;
+  }
+
+  #sky{
     background: #5487c5; /* Old browsers */
     background: -moz-linear-gradient(top,  #5487c5 0%, #9ac5e3 73%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5487c5), color-stop(73%,#9ac5e3)); /* Chrome,Safari4+ */
@@ -34,7 +87,6 @@ $oceanheight: 250px;
     background: -o-linear-gradient(top,  #5487c5 0%,#9ac5e3 73%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top,  #5487c5 0%,#9ac5e3 73%); /* IE10+ */
     background: linear-gradient(to bottom,  #5487c5 0%,#9ac5e3 73%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5487c5', endColorstr='#9ac5e3',GradientType=0 ); /* IE6-9 */
 
   }
 
@@ -59,6 +111,20 @@ $oceanheight: 250px;
   }
 
   #haze.raining, #haze.stormy{
+
+    background: #bec3d1; /* Old browsers */
+    background: -moz-linear-gradient(top,  #bec3d1 0%, #8f909e 91%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#bec3d1), color-stop(91%,#8f909e)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #bec3d1 0%,#8f909e 91%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #bec3d1 0%,#8f909e 91%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #bec3d1 0%,#8f909e 91%); /* IE10+ */
+    background: linear-gradient(to bottom,  #bec3d1 0%,#8f909e 91%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bec3d1', endColorstr='#8f909e',GradientType=0 ); /* IE6-9 */
+    opacity: .8;
+
+  }
+
+  #haze.stormy{
 
     background: #bec3d1; /* Old browsers */
     background: -moz-linear-gradient(top,  #bec3d1 0%, #8f909e 91%); /* FF3.6+ */
@@ -263,4 +329,8 @@ $oceanheight: 250px;
 
 
 }
+
+
+
+
 

@@ -4,6 +4,8 @@ class sdn.Views.Weather extends Backbone.View
 
 
   clouds:
+    "clear":
+      density: 0
     "pcloud":
       color: {r: 255, g: 255, b:255}
       density: 8
@@ -12,10 +14,10 @@ class sdn.Views.Weather extends Backbone.View
       density: 22
     "rain":
       color: {r: 190, g: 195, b:209}
-      density: 25
+      density: 35
     "thunder":
       color: {r: 190, g: 195, b:209}
-      density: 25
+      density: 40
 
   initialize: (options) ->
     @windModifier = options.windModifier ? 0
@@ -55,9 +57,10 @@ class sdn.Views.Weather extends Backbone.View
 
   draw: ->
     layer = new Kinetic.Layer()
-    cloudDensity = @.clouds[@model.get('scene')].density
-    segmentSize = Math.floor(@width/cloudDensity)
-    @drawCloud(layer, (Math.floor(Math.random()*(x*segmentSize))), (Math.floor(Math.random()*@height) - 120)) for x in [0..cloudDensity]
+    if @clouds[@model.get('scene')].density > 0
+      cloudDensity = @clouds[@model.get('scene')].density
+      segmentSize = Math.floor(@width/cloudDensity)
+      @drawCloud(layer, (Math.floor(Math.random()*(x*segmentSize))), (Math.floor(Math.random()*@height) - 120)) for x in [0..cloudDensity]
 
   drawCloud: (layer, x, y) ->
     cloud =  @createCloud(3, 15, x, y)

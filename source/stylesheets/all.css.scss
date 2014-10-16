@@ -3,3 +3,89 @@
 @import "bootstrap.css";
 @import "home";
 @import "landscape";
+@import "meteocons";
+
+.weather-control-panel{
+  max-height: 0;
+  background: darken(#E14B3B, 10%);
+  overflow: hidden;
+  cursor: pointer;
+  font-weight: 100;
+  color: #FFF;
+  -webkit-transition: max-height .3s ease-out;
+  -moz-transition: max-height .3s ease-out;
+  -ms-transition: max-height .3s ease-out;
+  -o-transition: max-height .3s ease-out;
+  transition: max-height .3s ease-out;
+
+  &.visible{
+    max-height: 2000px;
+    -webkit-transition: max-height .3s ease-in;
+    -moz-transition: max-height .3s ease-in;
+    -ms-transition: max-height .3s ease-in;
+    -o-transition: max-height .3s ease-in;
+    transition: max-height .3s ease-in;
+  }
+
+  .row-panel{
+    margin: 40px auto;
+  }
+
+  .controls-button-wrapper{
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .controls-button-group{
+    margin: 25px auto;
+    text-align: center;
+    .btn{
+      border: 1px solid #810000;
+      color: #810000;
+      background: transparent;
+
+    }
+  }
+
+  .condition {
+    display: inline-block;
+    margin-bottom: 10px;
+    text-align: center;
+
+    .condition-wrapper{
+      border-radius: 4px 4px 2px 2px;
+      color: #810000;
+      padding: 15px 0 5px;
+      border: 1px solid transparent;
+      .meteocon {
+        font-size: 60px;
+        line-height: 50px;
+        text-align: center;
+        display: block;
+      }
+      &.selected{
+        border: 1px solid #810000;
+      }
+      &:hover, &.selected {
+        color: #FFF;
+        background-color: darken(#CA2F1F, 3%);
+      }
+
+    }
+
+  }
+
+
+
+}
+
+.weather-control-panel-button{
+  border: 1px solid #FFF;
+  color: #FFF;
+  background: transparent;
+  margin: 10px 10px;
+  text-align: center;
+  padding: 8px 12px;
+  outline: none;
+
+}

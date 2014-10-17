@@ -1,5 +1,6 @@
-class sdn.Models.Time extends Backbone.Model
-  urlRoot: "http://www.isitfoggyinsanfrancisco.com/forecast/time?callback=?"
+class sdn.Models.Fog extends Backbone.Model
+  urlRoot: "http://www.isitfoggyinsanfrancisco.com/forecast/current?callback=?"
+#  urlRoot: "http://localhost:3001/forecast/current?callback=?"
   sync: (method, model, options) ->
     params = _.extend(
       type: 'GET'
@@ -10,6 +11,4 @@ class sdn.Models.Time extends Backbone.Model
       , options)
     $.jsonp(params)
 
-  parse: (response) ->
-    response?.query?.results?.channel
 

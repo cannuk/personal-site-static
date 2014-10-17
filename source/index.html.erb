@@ -3,9 +3,7 @@ title: Sean Neden
 ---
 <div class="postcard-background">
   <div class="postcard">
-    <div id="sky"></div>
-    <div id="sky-rising"></div>
-    <div id="sky-night"></div>
+    <div id="sky" class="sky-gradient-default"></div>
     <div id="haze" class=""></div>
     <div id="weather">
       <div id="weather_background"></div>
@@ -23,13 +21,15 @@ title: Sean Neden
     <div id="city-hill"></div>
     <div id="city"></div>
     <div id="headland-cliff"></div>
+    <div id="fog-back"></div>
+    <div id="fog-front"></div>
     <div id="bridge"></div>
-    <div class="weather-conditions">
-      <h1 class="temperature"></h1>
+  </div>
+  <div class="weather-conditions">
+    <h1 class="temperature"></h1>
 
-      <div class="conditions"></div>
-      <button class="weather-control-panel-button">Control the weather</button>
-    </div>
+    <div class="conditions"></div>
+    <button class="weather-control-panel-button">Control the weather</button>
   </div>
 </div>
 
@@ -52,37 +52,37 @@ title: Sean Neden
     </div>
     <div class="row row-panel panel-conditions">
       <div class="control-panel">
-        <div class="condition col-xs-2" data-condition-code="32" data-condition-text="Clear">
+        <div class="condition col-xs-2" data-scene="clear" data-condition-code="32" data-condition-text="Clear">
           <div class="condition-wrapper">
             <div class="meteocon" meteocon-icon="B" ></div>
             <p>Clear</p>
           </div>
         </div>
-        <div class="condition col-xs-2" data-condition-code="29" data-condition-text="Partly Cloudy">
+        <div class="condition col-xs-2" data-scene="pcloud" data-condition-code="29" data-condition-text="Partly Cloudy">
           <div class="condition-wrapper">
             <div class="meteocon" meteocon-icon="H"></div>
             <p>Partly Cloudy</p>
           </div>
         </div>
-        <div class="condition col-xs-2" data-condition-code="26" data-condition-text="Mostly Cloudy">
+        <div class="condition col-xs-2" data-scene="mcloud" data-condition-code="26" data-condition-text="Mostly Cloudy">
           <div class="condition-wrapper selected">
             <div class="meteocon" meteocon-icon="Y"></div>
             <p>Mostly Cloudy</p>
           </div>
         </div>
-        <div class="condition col-xs-2" data-condition-code="8" data-condition-text="Rain">
+        <div class="condition col-xs-2" data-scene="rain" data-condition-code="8" data-condition-text="Rain">
           <div class="condition-wrapper">
             <div class="meteocon" meteocon-icon="R"></div>
             <p>Rain</p>
           </div>
         </div>
-        <div class="condition col-xs-2" data-condition-code="37" data-condition-text="Thunderstorms">
+        <div class="condition col-xs-2" data-scene="thunder" data-condition-code="37" data-condition-text="Thunderstorms">
           <div class="condition-wrapper">
             <div class="meteocon" meteocon-icon="P"></div>
             <p>Thunderstorms</p>
           </div>
         </div>
-        <div class="condition col-xs-2" data-condition-code="fog" data-condition-text="Fog">
+        <div class="condition col-xs-2" data-scene="fog" data-condition-code="fog" data-condition-text="Fog">
           <div class="condition-wrapper">
             <div class="meteocon" meteocon-icon="L"></div>
             <p>Fog</p>
@@ -91,18 +91,36 @@ title: Sean Neden
       </div>
     </div>
     <div class="row row-panel panel-wind">
-      <div class="col-xs-1">
-        <div class="meteocon" meteocon-icon="N"></div>
+      <div class="condition col-xs-2">
+        <div class="condition-wrapper">
+          <div class="meteocon" meteocon-icon="N"></div>
+          <p>Calm</p>
+        </div>
       </div>
-      <div class="col-xs-10">
-        <input name="windSpeed" type="range" min="0" max="200" step="1" />
+      <div class="col-xs-8">
+        <input name="windspeed" type="range" min="0" max="200" step="1" />
       </div>
-      <div class="col-xs-1">
-        <div class="meteocon" meteocon-icon="S"></div>
+      <div class="condition col-xs-2">
+        <div class="condition-wrapper">
+          <div class="meteocon" meteocon-icon="S"></div>
+          <p>Hurricane</p>
+        </div>
       </div>
     </div>
     <div class="row row-panel panel-time">
-
+      <div class="condition col-xs-2">
+        <div class="condition-wrapper">
+          <div class="meteocon" meteocon-icon="A"></div>
+        </div>
+      </div>
+      <div class="col-xs-8">
+        <input name="hour" type="range" min="3" max="26" step="1" />
+      </div>
+      <div class="condition col-xs-2">
+        <div class="condition-wrapper">
+          <div class="meteocon" meteocon-icon="C"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

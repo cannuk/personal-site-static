@@ -10,5 +10,4 @@ class sdn.Views.Haze extends Backbone.View
   el: "#haze"
   render: ->
     scene = @model.get("scene")
-    console.log scene
     @$el.removeClass().addClass(@css[scene]) unless !scene

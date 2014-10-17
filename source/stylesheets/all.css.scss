@@ -1,9 +1,64 @@
+
+
 @charset "utf-8";
+@import "variables";
 @import "normalize";
 @import "bootstrap.css";
 @import "home";
 @import "landscape";
+@import "sky";
 @import "meteocons";
+
+
+//wrap the postcard so I can turn down the opacity at night to give the effect of darkness
+.postcard-background{
+  background-color: #333;
+  border-bottom: 15px solid #FFF;
+  -webkit-box-shadow: 1px 1px 1px 1px rgba(106,39,34,.6);
+  box-shadow: -1px 1px 1px 1px rgba(106,39,34,.6);
+  position: relative;
+  .weather-conditions {
+    z-index: 2000;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 5px 10px;
+    text-align: center;
+    color: #FFF;
+    h1 {
+      font-size: 65px;
+      margin: 0 auto;
+      font-weight: 100;
+
+    }
+    h1::after {
+      content: "\00b0";
+      position: relative;
+      vertical-align: super;
+      font-size: 30px;
+      font-weight: 100;
+    }
+    h1, .conditions {
+      text-shadow: 0 1px 2px #1D5987;
+    }
+  }
+}
+
+.postcard {
+  //  -webkit-transform: rotate(8deg);-moz-transform: rotate(8deg);-ms-transform: rotate(8deg);-o-transform: rotate(8deg);transform: rotate(8deg);
+  position: relative;
+  overflow: hidden;
+  height: 475px;
+
+  left: 0;
+  right: 0;
+  top: 0;
+
+  &.night {
+    opacity: .7;
+  }
+}
+
 
 .weather-control-panel{
   max-height: 0;
@@ -63,14 +118,19 @@
         text-align: center;
         display: block;
       }
-      &.selected{
+
+    }
+
+    &.selected{
+      .condition-wrapper{
         border: 1px solid #810000;
       }
-      &:hover, &.selected {
+    }
+    &:hover, &.selected {
+      .condition-wrapper{
         color: #FFF;
         background-color: darken(#CA2F1F, 3%);
       }
-
     }
 
   }
@@ -81,11 +141,111 @@
 
 .weather-control-panel-button{
   border: 1px solid #FFF;
+  background: rgba(255, 255, 255, .1);
   color: #FFF;
-  background: transparent;
   margin: 10px 10px;
   text-align: center;
   padding: 8px 12px;
   outline: none;
+  box-shadow: 0 0px 2px #1D5987;
+  text-shadow: 0 1px 2px #1D5987;
 
+  &:hover{
+    box-shadow: 0 0px 5px #1D5987;
+    text-shadow: 1px 1px 5px #1D5987;
+  }
+  &:active{
+    box-shadow: 0 0px 1px #1D5987;
+    text-shadow: 0px 0px 1px #1D5987;
+  }
+
+}
+
+
+//sliders
+input[type=range] {
+  margin-top: 45px;
+  /*removes default webkit styles*/
+  -webkit-appearance: none;
+
+  /*fix for FF unable to apply focus style bug */
+  border: 1px solid #CA2F1F;
+  background: #BD2C1D;
+
+}
+input[type=range]::-webkit-slider-runnable-track {
+  height: 5px;
+  background: #BD2C1D;
+  border: none;
+  border-radius: 3px;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #810000;
+  margin-top: -4px;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #BD2C1D;
+}
+
+input[type=range]::-moz-range-track {
+  height: 5px;
+  background: #BD2C1D;
+  border: none;
+  border-radius: 3px;
+}
+input[type=range]::-moz-range-thumb {
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #810000;
+}
+
+/*hide the outline behind the border*/
+input[type=range]:-moz-focusring{
+  outline: 1px solid white;
+  outline-offset: -1px;
+}
+
+input[type=range]::-ms-track {
+  height: 5px;
+
+  /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+  background: transparent;
+
+  /*leave room for the larger thumb to overflow with a transparent border */
+  border-color: transparent;
+  border-width: 6px 0;
+
+  /*remove default tick marks*/
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #777;
+  border-radius: 10px;
+}
+input[type=range]::-ms-fill-upper {
+  background: #BD2C1D;
+  border-radius: 10px;
+}
+input[type=range]::-ms-thumb {
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #810000;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #BD2C1D;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #ccc;
 }

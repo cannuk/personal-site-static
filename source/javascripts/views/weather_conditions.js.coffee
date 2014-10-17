@@ -5,7 +5,7 @@ class sdn.Views.WeatherConditions extends Backbone.View
     "click .weather-control-panel-button": "changeWeather"
 
   initialize: ->
-    this.listenTo(@model, "change:conditionText", @render)
+#    this.listenTo(@model, "change:conditionText", @render)
 
   render: () ->
     item = @model.get("item")

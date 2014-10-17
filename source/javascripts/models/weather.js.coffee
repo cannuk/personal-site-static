@@ -7,17 +7,17 @@ class sdn.Models.Weather extends sdn.Models.YQLModel
     @setWindspeed()
     @bindEvents()
 
-  bindEvents: =>
-    this.listenTo(this, "change", @setWindspeed)
-    this.listenTo(this, "change:conditionCode", @setScene)
-    this.listenTo(this, "change:conditionText", @setScene)
+  bindEvents: ->
+    @on("change:conditionCode", @setScene)
+#    @on("change", @setScene)
+    @on("change", @setWindspeed)
+    return true
 
 
-  setScene: ->
+  setScene: () ->
     conditionCode = @get("conditionCode")
     if conditionCode
       code = parseInt(conditionCode)
-      console.log code
       scenes =
         'clear':   [32, 31, 33, 34]
         'pcloud':  [29, 30, 44]
@@ -26,6 +26,7 @@ class sdn.Models.Weather extends sdn.Models.YQLModel
         'rain':    [8,9,11,12,40, 28]
       for own scene, codes of scenes
         return @set(scene: scene) if _.indexOf(codes, code) >= 0
+      return true
 
 
   changeWind: (windspeed) ->
@@ -39,6 +40,5 @@ class sdn.Models.Weather extends sdn.Models.YQLModel
     #I use 7 as the benchmark average wind speed
     windSpeed = .1
     if wind? and wind.speed?
-      windSpeed = (parseInt(wind.speed))*.03
-      console.log "windspeed is #{windSpeed}"
+      windSpeed = (parseInt(wind.speed))*.012
       @set(windspeed: windSpeed)

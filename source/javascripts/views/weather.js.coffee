@@ -8,19 +8,20 @@ class sdn.Views.Weather extends Backbone.View
       density: 0
     "pcloud":
       color: {r: 255, g: 255, b:255}
-      density: 8
+      density: 4
     "mcloud":
       color: {r: 255, g: 255, b:255}
-      density: 22
+      density: 10
     "rain":
       color: {r: 190, g: 195, b:209}
-      density: 35
+      density: 20
     "thunder":
       color: {r: 190, g: 195, b:209}
-      density: 40
+      density: 28
 
   initialize: (options) ->
     @windModifier = options.windModifier ? 0
+    @delay = options.delay ? 0
     @ceiling = options.ceiling ? 20
     @model.on "change:scene", @render, this
     @model.on "change:windspeed", ->
@@ -35,10 +36,10 @@ class sdn.Views.Weather extends Backbone.View
     @height = @$el.height()
     @stage = new Kinetic.Stage(container: @$el.get(0), width: @width, height: @height)
     @isRendered = true
-    if(@options?.delay?)
+    if(@delay > 0)
       setTimeout =>
         @draw()
-      , @options.delay
+      , @delay
     else
       @draw()
 
@@ -51,7 +52,7 @@ class sdn.Views.Weather extends Backbone.View
     grid = (((Math.round(Math.random())) for num in [0..width]) for num in [0..height])
     #stormy = {r: 190, g: 195, b:209}
     #mostly cloudy = {r: 239, g: 239, b:239}
-    $cloudgen.drawCloudGroup(context, grid, 40, 40, 25, @.clouds[@model.get('scene')].color)
+    $cloudgen.drawCloudGroup(context, grid, 40, 40, 25, @clouds[@model.get('scene')].color)
     new Kinetic.Image(image: cloudCanvas, x: x, y: y, opacity: 0)
 
 
@@ -59,7 +60,7 @@ class sdn.Views.Weather extends Backbone.View
     layer = new Kinetic.Layer()
     if @clouds[@model.get('scene')].density > 0
       cloudDensity = @clouds[@model.get('scene')].density
-      segmentSize = Math.floor(@width/cloudDensity)
+      segmentSize = Math.floor((@width*2)/cloudDensity)
       @drawCloud(layer, (Math.floor(Math.random()*(x*segmentSize))), (Math.floor(Math.random()*@height) - 120)) for x in [0..cloudDensity]
 
   drawCloud: (layer, x, y) ->
@@ -71,7 +72,7 @@ class sdn.Views.Weather extends Backbone.View
     @stage.add(layer)
     cloud.transitionTo
       opacity: 1
-      duration: 3
+      duration: 1
     anim = new Kinetic.Animation
       func: (frame) =>
         pos = cloud.getX() - @windSpeed

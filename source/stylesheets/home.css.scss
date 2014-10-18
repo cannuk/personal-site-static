@@ -13,7 +13,7 @@ body{
   .introduction{
 
     margin-top: 40px;
-    font-size: 40px;
+    font-size: 30px;
 
     .highlight{
       color: #f9dbd7;
@@ -21,4 +21,248 @@ body{
     }
 
   }
+}
+
+//wrap the postcard so I can turn down the opacity at night to give the effect of darkness
+.postcard-background{
+  background-color: #333;
+  border-bottom: 15px solid #FFF;
+  -webkit-box-shadow: 1px 1px 1px 1px rgba(106,39,34,.6);
+  box-shadow: -1px 1px 1px 1px rgba(106,39,34,.6);
+  position: relative;
+  .weather-conditions {
+    z-index: 2000;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 5px 10px;
+    text-align: center;
+    color: #FFF;
+    h1 {
+      font-size: 65px;
+      margin: 0 auto;
+      font-weight: 100;
+
+    }
+    h1::after {
+      content: "\00b0";
+      position: relative;
+      vertical-align: super;
+      font-size: 30px;
+      font-weight: 100;
+    }
+    h1, .conditions {
+      text-shadow: 0 1px 2px #1D5987;
+    }
+  }
+}
+
+.postcard {
+  //  -webkit-transform: rotate(8deg);-moz-transform: rotate(8deg);-ms-transform: rotate(8deg);-o-transform: rotate(8deg);transform: rotate(8deg);
+  position: relative;
+  overflow: hidden;
+  height: 475px;
+
+  left: 0;
+  right: 0;
+  top: 0;
+
+  &.night {
+    opacity: .7;
+  }
+}
+
+
+.weather-control-panel{
+  max-height: 0;
+  background: darken(#E14B3B, 10%);
+  overflow: hidden;
+  cursor: pointer;
+  font-weight: 100;
+  color: #FFF;
+  -webkit-transition: max-height .3s ease-out;
+  -moz-transition: max-height .3s ease-out;
+  -ms-transition: max-height .3s ease-out;
+  -o-transition: max-height .3s ease-out;
+  transition: max-height .3s ease-out;
+
+  &.visible{
+    max-height: 2000px;
+    -webkit-transition: max-height .3s ease-in;
+    -moz-transition: max-height .3s ease-in;
+    -ms-transition: max-height .3s ease-in;
+    -o-transition: max-height .3s ease-in;
+    transition: max-height .3s ease-in;
+  }
+
+  .row-panel{
+    margin: 40px auto;
+  }
+
+  .controls-button-wrapper{
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .controls-button-group{
+    margin: 25px auto;
+    text-align: center;
+    .btn{
+      border: 1px solid #810000;
+      color: #810000;
+      background: transparent;
+
+      &:active{
+        background-color: #bd2c1d;
+      }
+
+    }
+  }
+
+  .condition {
+    display: inline-block;
+    margin-bottom: 10px;
+    text-align: center;
+
+    .condition-wrapper{
+      border-radius: 4px 4px 2px 2px;
+      color: #810000;
+      padding: 15px 0 5px;
+      border: 1px solid transparent;
+      .meteocon {
+        font-size: 60px;
+        line-height: 50px;
+        text-align: center;
+        display: block;
+      }
+
+    }
+
+    &.selected{
+      .condition-wrapper{
+        border: 1px solid #810000;
+      }
+    }
+    &:hover, &.selected {
+      .condition-wrapper{
+        color: #FFF;
+        background-color: darken(#CA2F1F, 3%);
+      }
+    }
+
+  }
+
+
+
+}
+
+.weather-control-panel-button{
+  border: 1px solid #FFF;
+  background: rgba(255, 255, 255, .1);
+  color: #FFF;
+  margin: 10px 10px;
+  text-align: center;
+  padding: 8px 12px;
+  outline: none;
+  box-shadow: 0 0px 2px #1D5987;
+  text-shadow: 0 1px 2px #1D5987;
+
+  &:hover{
+    box-shadow: 0 0px 5px #1D5987;
+    text-shadow: 1px 1px 5px #1D5987;
+  }
+  &:active{
+    box-shadow: 0 0px 1px #1D5987;
+    text-shadow: 0px 0px 1px #1D5987;
+  }
+
+}
+
+
+//sliders
+input[type=range] {
+  margin-top: 45px;
+  /*removes default webkit styles*/
+  -webkit-appearance: none;
+
+  /*fix for FF unable to apply focus style bug */
+  border: 1px solid #CA2F1F;
+  background: #BD2C1D;
+
+}
+input[type=range]::-webkit-slider-runnable-track {
+  height: 5px;
+  background: #BD2C1D;
+  border: none;
+  border-radius: 3px;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #810000;
+  margin-top: -4px;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #BD2C1D;
+}
+
+input[type=range]::-moz-range-track {
+  height: 5px;
+  background: #BD2C1D;
+  border: none;
+  border-radius: 3px;
+}
+input[type=range]::-moz-range-thumb {
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #810000;
+}
+
+/*hide the outline behind the border*/
+input[type=range]:-moz-focusring{
+  outline: 1px solid white;
+  outline-offset: -1px;
+}
+
+input[type=range]::-ms-track {
+  height: 5px;
+
+  /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+  background: transparent;
+
+  /*leave room for the larger thumb to overflow with a transparent border */
+  border-color: transparent;
+  border-width: 6px 0;
+
+  /*remove default tick marks*/
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #777;
+  border-radius: 10px;
+}
+input[type=range]::-ms-fill-upper {
+  background: #BD2C1D;
+  border-radius: 10px;
+}
+input[type=range]::-ms-thumb {
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: #810000;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #BD2C1D;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #ccc;
 }

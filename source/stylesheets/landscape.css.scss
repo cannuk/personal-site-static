@@ -42,6 +42,18 @@
 
   }
 
+  #sutro-tower{
+    background: url(/images/sutro-tower.png) no-repeat;
+    position: absolute;
+    left:414px;
+    top: 30px + $skyoffset;
+    width: 20px;
+    height: 80px;
+    z-index: 10;
+    background-size: contain;
+
+  }
+
   #sutro-hill{
     background: url(/images/headland.png) no-repeat;
     position: absolute;
@@ -110,6 +122,17 @@
     width: 700px;
     height: 391px;
     z-index: 29;
+  }
+
+  #skyline{
+    background: url(/images/skyline.png) no-repeat;
+    position: absolute;
+    left: 40px;
+    top: 255px;
+    width: 100px;
+    height: 40px;
+    z-index: 31;
+    background-size: contain;
   }
 
   #city{

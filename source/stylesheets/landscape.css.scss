@@ -127,22 +127,46 @@
   #skyline{
     background: url(/images/skyline.png) no-repeat;
     position: absolute;
-    left: 40px;
-    top: 255px;
-    width: 100px;
-    height: 40px;
+    left: 50px;
+    top: 265px;
+    width: 120px;
+    height: 60px;
     z-index: 31;
     background-size: contain;
   }
 
+#skyline-front{
+  background: url(/images/skyline2.png) no-repeat;
+  position: absolute;
+  left: 40px;
+  top: 255px;
+  width: 120px;
+  height: 60px;
+  z-index: 31;
+  background-size: contain;
+}
+
   #city{
     position: absolute;
+    background: url(/images/city.png) no-repeat;
     left: -5px;
-    top: 265px;
-    width: 700px;
-    height: 391px;
+    top: 276px;
+    width: 350px;
+    height: 120px;
     z-index: 29;
+    background-size: contain;
   }
+
+#city2{
+  position: absolute;
+  background: url(/images/city.png) no-repeat;
+  left: 45px;
+  top: 285px;
+  width: 350px;
+  height: 120px;
+  z-index: 29;
+  background-size: contain;
+}
 
   #headland{
     background: url(/images/headland.png) no-repeat;
@@ -152,16 +176,6 @@
     width: 720px;
     height: 391px;
     z-index: 30;
-  }
-
-  #beach{
-    background: url(/images/beach.png) no-repeat;
-    position: absolute;
-    left: 218px;
-    top: 281px + $skyoffset;
-    width: 700px;
-    height: 391px;
-    z-index: 35;
   }
 
   #headland-cliff{

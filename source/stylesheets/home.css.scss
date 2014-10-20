@@ -17,7 +17,6 @@ body{
 
     .highlight{
       color: #f9dbd7;
-      font-weight: 900;
     }
 
   }
@@ -26,7 +25,7 @@ body{
 //wrap the postcard so I can turn down the opacity at night to give the effect of darkness
 .postcard-background{
   background-color: #333;
-  border-bottom: 15px solid #FFF;
+  border-bottom: 10px solid #FFF;
   -webkit-box-shadow: 1px 1px 1px 1px rgba(106,39,34,.6);
   box-shadow: -1px 1px 1px 1px rgba(106,39,34,.6);
   position: relative;
@@ -74,6 +73,7 @@ body{
 
 
 .weather-control-panel{
+  pointer-events: none;
   max-height: 0;
   background: darken(#E14B3B, 10%);
   overflow: hidden;
@@ -87,6 +87,7 @@ body{
   transition: max-height .3s ease-out;
 
   &.visible{
+    pointer-events: auto;
     max-height: 2000px;
     -webkit-transition: max-height .3s ease-in;
     -moz-transition: max-height .3s ease-in;
@@ -177,6 +178,100 @@ body{
   }
 
 }
+
+.content-container{
+
+  .introduction{
+    p{
+      margin-bottom: 30px;
+    }
+    h2{
+      padding: 10px 0;
+      color: #f9dbd7;
+      border-bottom: 1px solid #ca2f1f;
+      margin-bottom: 30px;
+    }
+  }
+
+  .examples{
+    margin-bottom: 40px;
+    .example{
+
+      border-radius: 4px 4px 2px 2px;
+      margin-bottom: 40px;
+      -webkit-box-shadow: 0px 0px 2px 0px rgba(129, 0, 0, .8);
+      box-shadow: 0px 0px 2px 0px rgba(129, 0, 0, .8);
+      .screenshot{
+
+        background-color: #FFF;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 200px;
+        border-radius: 4px 4px 0 0;
+        position:relative;
+        border-bottom: 1px solid #EFEFEF;
+        a{
+          position: absolute;
+          left:0;
+          right: 0;
+          bottom: 0;
+          top: 0;
+        }
+      }
+      .description{
+        h5{
+          font-weight: bold;
+        }
+        background-color: #FFF;
+        border-radius: 0 0 4px 4px;
+        padding: 8px;
+        p{
+          height: 80px;
+        }
+        .links{
+          padding: 30px;
+          text-align:center;
+          a{
+            color: #ca2f1f;
+          }
+        }
+      }
+    }
+
+    .example.foggy{
+      .screenshot{
+        background-image: url(/images/foggy.png);
+      }
+    }
+
+    .example.numbers{
+      .screenshot{
+        background-image: url(/images/magicnumbers.png);
+      }
+    }
+
+    .example.dash{
+      .screenshot{
+        background-image: url(/images/bart-dash.png);
+      }
+    }
+  }
+
+  .social{
+
+    .social-wrapper{
+      margin: 20px 0px 40px 0px;
+      font-size: 70px;
+      text-align:center;
+      p{
+        font-size: 24px;
+      }
+    }
+  }
+
+}
+
+
 
 
 //sliders

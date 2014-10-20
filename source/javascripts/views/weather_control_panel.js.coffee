@@ -33,7 +33,6 @@ class sdn.Views.WeatherControlPanel extends Backbone.View
   hide: ->
     @_isShown = false
     @$el.removeClass("visible")
-    false
 
   resetPanels: ->
     @$el.find(".row-panel").css("display", "none")
